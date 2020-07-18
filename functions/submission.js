@@ -5,6 +5,6 @@ exports.handler = function(event, context, callback) {
     callback(null, {
       statusCode: 200,
       //body: JSON.stringify({msg:`Thank you for submitting this question ${question}`}),
-      body: "thank you for the question",
+      body: `thank you for the question ${question}`,
     });
   };
