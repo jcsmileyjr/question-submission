@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import './App.css';
-//import axios from 'axios';
+import axios from 'axios';
 
 function App() {
   const [userInput, setUserInput] = useState(""); // User entered data retrived from text area
 
   // Function to submit the user inputed question to the back end.
   const onSubmit = () => {
+    const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submissions"
+    axios.post(url,{question:userInput}).then((response) => {
+      console.log(response);
+    });
 
     alert("hello");
   }
