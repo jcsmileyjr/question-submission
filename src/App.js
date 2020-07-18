@@ -9,7 +9,7 @@ function App() {
   const onSubmit =async () => {
     
     const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submissions"
-    axios.post(url,{"question":userInput}).then((response) => {
+    axios.get(url,{"question":userInput}).then((response) => {
       console.log(response);
     });
 
