@@ -4,7 +4,10 @@ exports.handler = function(event, context, callback) {
     console.log(question);
     callback(null, {
       statusCode: 200,
-      //body: JSON.stringify({msg:`Thank you for submitting this question ${question}`}),
-      body: `thank you for the question ${question}`,
+      headers:{
+          'Content-Type':'application/json'
+      },
+      body: JSON.stringify({msg:`Thank you for submitting this question ${question}`}),
+      //body: `thank you for the question ${question}`,
     });
   };
