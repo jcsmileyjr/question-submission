@@ -8,8 +8,8 @@ function App() {
   // Function to submit the user inputed question to the back end.
   const onSubmit =async () => {
     
-    const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submissions"
-    axios.get(url,{"question":userInput}).then((response) => {
+    const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submission"
+    axios.post(url,{"question":userInput}).then((response) => {
       console.log(response);
     });
 
