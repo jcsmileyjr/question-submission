@@ -9,12 +9,12 @@ const getRecords = async () => {
     return records;
 }
 
-exports.handler = function(event, context, callback) {
-    const questions = getRecords();
+exports.handler = async function(event, context, callback) {
+    const questions = await getRecords();
     console.log(questions);
     
     callback(null, {
       statusCode: 200,
-      body: JSON.stringify({data:{questions}}),
+      body: {data:{questions}},
     });
   };
