@@ -1,7 +1,26 @@
+var Airtable = require('airtable');
+const {key, baseId} = process.env; // Get the enviroment values defined in netlify site 
+var base = new Airtable({apiKey:key}).base(baseId);
+
+const table = base('dailyQuestions');
+
+const submitRecord = async (fields) => {
+    const createdRecord = await table.create(fields);
+    console.log(createdRecord);
+}
 
 exports.handler = function(event, context, callback) {
     const {userQuestion} = JSON.parse(event.body);
-    console.log(userQuestion);
+    const todayDate = new Date();
+    var convertedDate = todayDate.toLocaleDateString();
+
+    const newRecord= {
+      Question: userQuestion,
+      Status:"In progress",
+      Date: convertedDate,
+    }
+    
+    submitRecord(newRecord);
     
     callback(null, {
       statusCode: 200,
