@@ -15,6 +15,6 @@ exports.handler = async function(event, context, callback) {
     
     callback(null, {
       statusCode: 200,
-      body: {data:{questions}},
+      body: JSON.stringify({data:{questions}}),
     });
   };
