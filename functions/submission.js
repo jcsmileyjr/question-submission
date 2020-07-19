@@ -10,14 +10,12 @@ const submitRecord = async (fields) => {
 }
 
 exports.handler = function(event, context, callback) {
-    const {userQuestion} = JSON.parse(event.body);
+    const {question} = JSON.parse(event.body);
     const todayDate = new Date();
     var convertedDate = todayDate.toLocaleDateString();
 
-    console.log(userQuestion);
-
     const newRecord= {
-      'Question': userQuestion,
+      'Question': question,
       'Status':"In progress",
       'Date': convertedDate,
     }
