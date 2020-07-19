@@ -12,9 +12,6 @@ function App() {
     axios.post(url,{"question":userInput}).then((response) => {
       console.log(response);
     });
-
-
-    alert("hello");
   }
   
   // Function to saved user input to the component state
