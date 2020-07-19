@@ -11,6 +11,7 @@ const getRecords = async () => {
 
 exports.handler = function(event, context, callback) {
     const questions = getRecords();
+    console.log(questions);
     
     callback(null, {
       statusCode: 200,
