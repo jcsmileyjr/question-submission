@@ -1,5 +1,6 @@
 var Airtable = require('airtable');
-var base = new Airtable({apiKey: '********'}).base('appwTG10Xy7VARMWE');
+const {key, baseId} = process.env; // Get the enviroment values defined in netlify site 
+var base = new Airtable({apiKey:key}).base(baseId);
 
 const table = base('dailyQuestions');
 
