@@ -14,10 +14,12 @@ exports.handler = function(event, context, callback) {
     const todayDate = new Date();
     var convertedDate = todayDate.toLocaleDateString();
 
+    console.log(userQuestion);
+
     const newRecord= {
-      Question: userQuestion,
-      Status:"In progress",
-      Date: convertedDate,
+      'Question': userQuestion,
+      'Status':"In progress",
+      'Date': convertedDate,
     }
     
     submitRecord(newRecord);
