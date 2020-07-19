@@ -30,6 +30,6 @@ exports.handler = function(event, context, callback) {
         /* Required for cookies, authorization headers with HTTPS */
         'Access-Control-Allow-Credentials': true
       },
-      body: JSON.stringify({question:{userQuestion}}),
+      body: JSON.stringify({question:{question}}),
     });
   };
