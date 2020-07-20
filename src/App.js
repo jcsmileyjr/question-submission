@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 function App() {
   const [userInput, setUserInput] = useState(""); // User entered data retrived from text area
@@ -10,7 +11,7 @@ function App() {
     
     const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submission"
     axios.post(url,{"question":userInput}).then((response) => {
-      console.log(response);
+      swal(`Thank you for submitting the question ${userInput}`);
     });
   }
   
