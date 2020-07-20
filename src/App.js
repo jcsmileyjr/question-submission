@@ -10,10 +10,9 @@ function App() {
   const onSubmit =async () => {
     
     const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submission"
-    axios.post(url,{"question":userInput}).then((response) => {
-      swal(`Thank you for submitting the question ${userInput}`);
-    });
-  }
+    axios.post(url,{"question":userInput});
+    swal(`Thank you for submitting the question ${userInput}`);
+  };
   
   // Function to saved user input to the component state
   const captureUserInput = e => {

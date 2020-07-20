@@ -5,8 +5,7 @@ var base = new Airtable({apiKey:key}).base(baseId);
 const table = base('dailyQuestions');
 
 const submitRecord = async (fields) => {
-    const createdRecord = await table.create(fields);
-    console.log(createdRecord);
+    await table.create(fields);
 }
 
 exports.handler = function(event, context, callback) {
