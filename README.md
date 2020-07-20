@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Code Connection Submit a Question Form
 
-## Available Scripts
+![picture of app](./assets/question-submission-1.PNG);
 
-In the project directory, you can run:
+### Table of Contents
+1. Purpose
+2. Motivation
+5. Click to View Site
+3. Objectives
+4. Wireframe
+5. Technologies Used
 
-### `npm start`
+### Purpose:
+Allow members of the tech non-profit group to submit quesitons to be posted in the morning on Slack.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Motivation:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This project was used to practice developing an API with Netlify Functions and connecting to a Airtable.com database.
 
-### `npm test`
+### Click to view Site [Question Submission Form](https://code-connector-question-submission.netlify.app/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Objectives:
+1. User can input an question.
+2. The user inputted question is saved to an Airtable.com database utilizing a Netlify function    
+3. The user is informed that the question has been saved
+4. There is an API to display all questions
 
-### `npm run build`
+### WireFrame
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screen-shot of Wireframe in use](./assets/Home-1.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### This app was built with the following technologies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**React:** JavaScript front-end library for building user interfaces
 
-### `npm run eject`
+**Netlify**: Web developer platform for hosting infrastructure, continuous integration, deployment pipeline with GitHub, and serverless backend services.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Airtable** Web developer platform with a spreadsheet-database hybrid that allow users to access to data.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Git-Hub:** Web-based version control repository and Internet hosting service
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Abode XD** A wire-framing tool used to create a mockup/visual of what is to be coded
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**JavaScript:** Object-oriented programming language for web pages
 
-## Learn More
+**HTML:** Mark-up language for creating web pages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**CSS:** A formatting language for styling web pages
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+_Created by JC Smiley in July of 2020_
