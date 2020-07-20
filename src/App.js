@@ -11,7 +11,7 @@ function App() {
     
     const url = "https://dreamy-noyce-511575.netlify.app/.netlify/functions/submission"
     axios.post(url,{"question":userInput});
-    swal(`Thank you for submitting the question ${userInput}`);
+    swal(`Thank you for submitting the question, "${userInput}"`);
   };
   
   // Function to saved user input to the component state
