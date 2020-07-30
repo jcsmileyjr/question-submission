@@ -22,6 +22,7 @@ function App() {
     const url = "https://code-connector-question-submission.netlify.app/.netlify/functions/submission"
     axios.post(url,{"question":userInput});
     swal(`Thank you for submitting the question, "${userInput}"`);
+    setUserInput('');
   };
   
   // Function to saved user input to the component state
@@ -31,7 +32,7 @@ function App() {
 
   if(!showList){
     return(
-      <InputQustion captureUserInput={captureUserInput} onSubmit ={onSubmit} showQuestions={() => {setShowList(true)}} />
+      <InputQustion captureUserInput={captureUserInput} value={userInput} onSubmit ={onSubmit} showQuestions={() => {setShowList(true)}} />
     );
   }else{
     return (
@@ -50,6 +51,7 @@ const InputQustion = props => {
         <div className="content">
         <h3 className="input-title">Submit a Daily Question</h3>
         <textarea 
+          value={props.value}
           type="text" 
           className="input-style" 
           placeholder="Write question here ....." 
