@@ -36,7 +36,7 @@ function App() {
     );
   }else{
     return (
-      <ShowPreviousQuestions />
+      <ShowPreviousQuestions submittedQuestions = {currentQuestions} />
     );
   }
 }
@@ -70,6 +70,20 @@ const ShowPreviousQuestions = props => {
   return(
     <div>
       <h1>List of Submitted Questions</h1>
+      {
+        props.submittedQuestions.map((user) => {
+          return(
+          <section>
+            <p>{user.fields.Question} </p>
+            {user.fields.Status === 'In progress' &&
+              <p>Question has not been asked yet</p>
+            }
+              {user.fields.Status === 'Done' &&
+              <p>Question has been Asked!!!</p>
+            }
+          </section>)
+        })
+      }
 
     </div>
   );
