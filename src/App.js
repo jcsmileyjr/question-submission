@@ -54,7 +54,8 @@ const InputQustion = props => {
           className="input-style" 
           placeholder="Write question here ....." 
           rows="100" 
-          cols="30" 
+          cols="30"
+          resize = 'vertical' 
           onChange={props.captureUserInput}
         />
         <button type="button" className="button-style" onClick={props.onSubmit}>Submit</button>
