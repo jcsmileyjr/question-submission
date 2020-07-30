@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -6,6 +6,16 @@ import swal from 'sweetalert';
 function App() {
   const [userInput, setUserInput] = useState(""); // User entered data retrived from text area
   const [showList, setShowList] = useState(false) // Use to switch screens between input question or show previous questions
+  const [currentQuestions, setCurrentQuestions] = useState([]) // Use to switch screens between input question or show previous questions
+
+  useEffect(() => { getCurrentQuestions(); }, []);// Load API weather data to component state before page is loading
+
+  const getCurrentQuestions = async () => {
+    const response = await fetch(`https://code-connector-question-submission.netlify.app/.netlify/functions/list`);
+		const data = await response.json();// Extracts the JSON from the response.body and converts JSON string into a JavaScript object
+    setCurrentQuestions(data.data.questions);
+    console.table(data.data.questions);
+  }
 
   // Function to submit the user inputed question to the back end.
   const onSubmit =async () => {
@@ -20,9 +30,15 @@ function App() {
     setUserInput(e.target.value);
   }
 
-  return (
-    <InputQustion captureUserInput={captureUserInput} onSubmit ={onSubmit} />
-  );
+  if(!showList){
+    return(
+      <InputQustion captureUserInput={captureUserInput} onSubmit ={onSubmit} showQuestions={setShowList(true)} />
+    );
+  }else{
+    return (
+      <ShowPreviousQuestions />
+    );
+  }
 }
 
 export default App;
@@ -43,7 +59,7 @@ const InputQustion = props => {
           onChange={props.captureUserInput}
         />
         <button type="button" className="button-style" onClick={props.onSubmit}>Submit</button>
-        <button type="button" className="button-style previous-button-style" onClick={props.onSubmit}>View Submitted Questions</button>
+        <button type="button" className="button-style previous-button-style" onClick={props.showQuestions}>View Submitted Questions</button>
         </div>
       </section>
     </div>
