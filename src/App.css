@@ -16,6 +16,15 @@
   margin-top: 100px;  
 }
 
+.center-text {
+  text-align: center;
+}
+
+.question-style {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
 .content {
   height: 350px;
   width: 300px;  

@@ -14,7 +14,6 @@ function App() {
     const response = await fetch(`https://code-connector-question-submission.netlify.app/.netlify/functions/list`);
 		const data = await response.json();// Extracts the JSON from the response.body and converts JSON string into a JavaScript object
     setCurrentQuestions(data.data.questions);
-    console.table(data.data.questions);
   }
 
   // Function to submit the user inputed question to the back end.
@@ -32,11 +31,11 @@ function App() {
 
   if(!showList){
     return(
-      <InputQustion captureUserInput={captureUserInput} onSubmit ={onSubmit} showQuestions={setShowList(true)} />
+      <InputQustion captureUserInput={captureUserInput} onSubmit ={onSubmit} showQuestions={() => {setShowList(true)}} />
     );
   }else{
     return (
-      <ShowPreviousQuestions submittedQuestions = {currentQuestions} />
+      <ShowPreviousQuestions submittedQuestions = {currentQuestions} showQuestions={() => {setShowList(false)}} />
     );
   }
 }
@@ -69,18 +68,15 @@ const InputQustion = props => {
 const ShowPreviousQuestions = props => {
   return(
     <div>
-      <h1>List of Submitted Questions</h1>
-      {
-        props.submittedQuestions.map((user) => {
+      <h1 className="center-text">List of Submitted Questions</h1>
+      <div className="center-text">
+        <button type="button" className="button-style previous-button-style" onClick={props.showQuestions}>View Submitted Questions</button>
+     </div>
+       {
+        props.submittedQuestions.map((user, id) => {
           return(
-          <section>
+          <section key={id} className="question-style">
             <p>{user.fields.Question} </p>
-            {user.fields.Status === 'In progress' &&
-              <p>Question has not been asked yet</p>
-            }
-              {user.fields.Status === 'Done' &&
-              <p>Question has been Asked!!!</p>
-            }
           </section>)
         })
       }
