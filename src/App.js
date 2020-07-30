@@ -1,10 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 function App() {
   const [userInput, setUserInput] = useState(""); // User entered data retrived from text area
+  const [showList, setShowList] = useState(false) // Use to switch screens between input question or show previous questions
+  const [currentQuestions, setCurrentQuestions] = useState([]) // Use to switch screens between input question or show previous questions
+
+  useEffect(() => { getCurrentQuestions(); }, []);// Load API weather data to component state before page is loading
+
+  const getCurrentQuestions = async () => {
+    const response = await fetch(`https://code-connector-question-submission.netlify.app/.netlify/functions/list`);
+		const data = await response.json();// Extracts the JSON from the response.body and converts JSON string into a JavaScript object
+    setCurrentQuestions(data.data.questions);
+  }
 
   // Function to submit the user inputed question to the back end.
   const onSubmit =async () => {
@@ -19,7 +29,21 @@ function App() {
     setUserInput(e.target.value);
   }
 
-  return (
+  if(!showList){
+    return(
+      <InputQustion captureUserInput={captureUserInput} onSubmit ={onSubmit} showQuestions={() => {setShowList(true)}} />
+    );
+  }else{
+    return (
+      <ShowPreviousQuestions submittedQuestions = {currentQuestions} showQuestions={() => {setShowList(false)}} />
+    );
+  }
+}
+
+export default App;
+
+const InputQustion = props => {
+  return(
     <div>
       <h1 className="header">Code Connector</h1>
       <section className="content-container">
@@ -31,13 +55,32 @@ function App() {
           placeholder="Write question here ....." 
           rows="100" 
           cols="30" 
-          onChange={captureUserInput}
+          onChange={props.captureUserInput}
         />
-        <button type="button" className="button-style" onClick={onSubmit}>Submit</button>
+        <button type="button" className="button-style" onClick={props.onSubmit}>Submit</button>
+        <button type="button" className="button-style previous-button-style" onClick={props.showQuestions}>View Submitted Questions</button>
         </div>
       </section>
     </div>
   );
 }
 
-export default App;
+const ShowPreviousQuestions = props => {
+  return(
+    <div>
+      <h1 className="center-text">List of Submitted Questions</h1>
+      <div className="center-text">
+        <button type="button" className="button-style previous-button-style" onClick={props.showQuestions}>View Submitted Questions</button>
+     </div>
+       {
+        props.submittedQuestions.map((user, id) => {
+          return(
+          <section key={id} className="question-style">
+            <p>{user.fields.Question} </p>
+          </section>)
+        })
+      }
+
+    </div>
+  );
+}
