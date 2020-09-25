@@ -18,10 +18,10 @@ function App() {
 
   // Function to submit the user inputed question to the back end.
   const onSubmit =async () => {
-    
     const url = "https://code-connector-question-submission.netlify.app/.netlify/functions/submission"
     axios.post(url,{"question":userInput});
     swal(`Thank you for submitting the question, "${userInput}"`);
+    getCurrentQuestions();
     setUserInput('');
   };
   
@@ -36,7 +36,7 @@ function App() {
     );
   }else{
     return (
-      <ShowPreviousQuestions submittedQuestions = {currentQuestions} showQuestions={() => {getCurrentQuestions(); setShowList(false)}} />
+      <ShowPreviousQuestions submittedQuestions = {currentQuestions} showQuestions={() => {setShowList(false)}} />
     );
   }
 }
@@ -73,7 +73,7 @@ const ShowPreviousQuestions = props => {
     <div>
       <h1 className="center-text">List of Submitted Questions</h1>
       <div className="center-text">
-        <button type="button" className="button-style previous-button-style" onClick={props.showQuestions}>View Submitted Questions</button>
+        <button type="button" className="button-style go-back-button-style" onClick={props.showQuestions}>View Submitted Questions</button>
      </div>
        {
         props.submittedQuestions.map((user, id) => {
