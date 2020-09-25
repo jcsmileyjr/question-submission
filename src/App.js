@@ -36,7 +36,7 @@ function App() {
     );
   }else{
     return (
-      <ShowPreviousQuestions submittedQuestions = {currentQuestions} showQuestions={() => {setShowList(false)}} />
+      <ShowPreviousQuestions submittedQuestions = {currentQuestions} showQuestions={() => {getCurrentQuestions(); setShowList(false)}} />
     );
   }
 }
