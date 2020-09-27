@@ -8,7 +8,12 @@ const submitRecord = async (fields) => {
     await table.create(fields);
 }
 
-exports.handler = function(event, context, callback) {
+const getRecords = async () => {
+  const records = await table.select().firstPage();// Get all records from dailyQuestion table's firt page
+  return records;
+}
+
+exports.handler = async function(event, context, callback) {
     const {question} = JSON.parse(event.body);
     const todayDate = new Date();
     var convertedDate = todayDate.toLocaleDateString();
@@ -20,6 +25,8 @@ exports.handler = function(event, context, callback) {
     }
     
     submitRecord(newRecord);
+
+    const questions = await getRecords();
     
     callback(null, {
       statusCode: 200,
@@ -29,6 +36,6 @@ exports.handler = function(event, context, callback) {
         /* Required for cookies, authorization headers with HTTPS */
         'Access-Control-Allow-Credentials': true
       },
-      body: JSON.stringify({question:{question}}),
+      body: JSON.stringify({data:{questions}}),
     });
   };

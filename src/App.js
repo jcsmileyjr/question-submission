@@ -19,9 +19,13 @@ function App() {
   // Function to submit the user inputed question to the back end.
   const onSubmit =async () => {
     const url = "https://code-connector-question-submission.netlify.app/.netlify/functions/submission"
-    axios.post(url,{"question":userInput});
+    axios.post(url,{"question":userInput})
+    .then(function(response){
+      const data = response.data;
+  console.log(data);
+      setCurrentQuestions(data.data.questions);
+    }) 
     swal(`Thank you for submitting the question, "${userInput}"`);
-    getCurrentQuestions();
     setUserInput('');
   };
   
